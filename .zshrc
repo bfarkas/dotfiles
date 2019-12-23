@@ -47,7 +47,7 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -60,16 +60,18 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+ZSH_DISABLE_COMPFIX="true"
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  brew
+#  brew
   common-aliases
   dirhistory
-  osx
+#  osx
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -104,21 +106,26 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 # POWERLINE stuff
-prompt_zsh_showStatus () {
-  state=`osascript -e 'tell application "Spotify" to player state as string'`;
-  if [ $state = "playing" ]; then
-    artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
-    track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
+#prompt_zsh_showStatus () {
+#  state=`osascript -e 'tell application "Spotify" to player state as string'`;
+#  if [ $state = "playing" ]; then
+#    artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
+#    track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
+#
+#    echo -n " %F{green} \uf9c6%F{white}$artist - $track";
+#  fi
+#}
 
-    echo -n " %F{green} \uf9c6%F{white}$artist - $track";
-  fi
-}
-
+DEFAULT_USER="hideki"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status zsh_showStatus)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(context os_icon_joined status_joined)
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}\u256D\u2500%f"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\uf460%f "
+#POWERLEVEL9K_OS_ICON_BACKGROUND='012'
+#POWERLEVEL9K_OS_ICON_FOREGROUND='000'
+#fpath=(~/.oh-my-zsh/custom/plugins/restic-completion $fpath)
+#autoload -U compinit && compinit
